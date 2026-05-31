@@ -14,10 +14,15 @@
   },
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch"
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.7",
+    "tsup": "^8.0.0",
     "typescript": "^5.0.0",
-    "tsup": "^8.0.0"
+    "vitest": "^4.1.7"
   }
 }

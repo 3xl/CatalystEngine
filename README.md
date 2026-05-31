@@ -53,6 +53,18 @@ npm run build   # genera dist/ in formato CJS + ESM con type declarations
 npm run dev     # watch mode
 ```
 
+## Test
+
+La suite di test usa [Vitest](https://vitest.dev/) e copre il **100%** della codebase
+(statements, branch, funzioni e righe). Le soglie di copertura sono imposte in
+`vitest.config.ts`, quindi una regressione di copertura fa fallire la build.
+
+```bash
+npm test            # esegue la suite una volta
+npm run test:watch  # watch mode
+npm run test:coverage  # esegue la suite con report di copertura
+```
+
 ## Esempio d'uso
 
 ```typescript
