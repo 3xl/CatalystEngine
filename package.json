@@ -5,6 +5,7 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "packageManager": "pnpm@10.30.3",
   "exports": {
     ".": {
       "require": "./dist/index.js",
@@ -17,12 +18,22 @@
     "dev": "tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "predocs:dev": "tsup",
+    "docs:dev": "vitepress dev docs",
+    "predocs:build": "tsup",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^4.1.7",
+    "phaser": "^4.1.0",
     "tsup": "^8.0.0",
     "typescript": "^5.0.0",
+    "vitepress": "^1.6.4",
     "vitest": "^4.1.7"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
   }
 }
