@@ -7,3 +7,6 @@ coverage/
 # VitePress
 docs/.vitepress/cache/
 docs/.vitepress/dist/
+
+# graphify (knowledge graph output, artefatto locale)
+graphify-out/
