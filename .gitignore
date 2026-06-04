@@ -1,0 +1,12 @@
+node_modules/
+dist/
+coverage/
+*.log
+.DS_Store
+
+# VitePress
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
+# graphify (knowledge graph output, artefatto locale)
+graphify-out/

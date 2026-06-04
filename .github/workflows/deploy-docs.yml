@@ -1,0 +1,74 @@
+name: Deploy docs to GitHub Pages
+
+on:
+  # Pubblica a ogni push su master (solo se cambiano docs, engine o config build)
+  push:
+    branches: [master]
+    paths:
+      - 'docs/**'
+      - 'src/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'tsup.config.ts'
+      - '.github/workflows/deploy-docs.yml'
+  # Permette l'avvio manuale dalla tab Actions
+  workflow_dispatch:
+
+# Permessi necessari al deploy su Pages tramite OIDC
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Una sola deploy alla volta; non annullare un deploy in corso
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Storia completa: serve a VitePress per il timestamp "lastUpdated"
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build docs
+        # predocs:build ricompila l'engine (tsup → dist) prima di vitepress build.
+        # DOCS_BASE imposta il sottopercorso del project page.
+        env:
+          DOCS_BASE: /CatalystEngine/
+        run: pnpm run docs:build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/.vitepress/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

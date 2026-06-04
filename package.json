@@ -1,0 +1,39 @@
+{
+  "name": "catalyst-engine",
+  "version": "1.0.0",
+  "description": "A modular, data-driven, plug-and-play progression engine for TypeScript and PhaserJS",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "packageManager": "pnpm@10.30.3",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "predocs:dev": "tsup",
+    "docs:dev": "vitepress dev docs",
+    "predocs:build": "tsup",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.7",
+    "phaser": "^4.1.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0",
+    "vitepress": "^1.6.4",
+    "vitest": "^4.1.7"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  }
+}

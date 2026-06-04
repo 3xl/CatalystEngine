@@ -1,0 +1,207 @@
+/* Shared styles for the CatalystEngine Playground. Themed via VitePress vars. */
+.pg {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pg-topbar {
+  position: sticky;
+  top: var(--vp-nav-height, 0px);
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+}
+.pg-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin: 0;
+}
+.pg-spacer {
+  flex: 1;
+}
+
+.pg-timeline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+}
+.pg-timeline input[type='range'] {
+  width: 180px;
+}
+.pg-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+.pg-badge--past {
+  background: var(--vp-c-yellow-soft, #f5e3c0);
+  color: var(--vp-c-yellow-1, #915930);
+}
+
+.pg-error {
+  color: var(--vp-c-danger-1, #b8272c);
+  font-size: 0.8rem;
+  font-family: var(--vp-font-family-mono);
+}
+
+.pg-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) 1fr;
+  gap: 14px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .pg-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.pg-col-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+
+.pg-panel {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  background: var(--vp-c-bg);
+  padding: 12px 14px;
+  overflow: hidden;
+}
+.pg-panel__title {
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-2);
+  border: none;
+  padding: 0;
+}
+.pg-panel__sub {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-3);
+  margin: -6px 0 10px;
+}
+
+.pg-btn {
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 7px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.pg-btn:hover:not(:disabled) {
+  border-color: var(--vp-c-brand-1);
+}
+.pg-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.pg-btn--primary {
+  background: var(--vp-c-brand-1);
+  color: #fff;
+  border-color: var(--vp-c-brand-1);
+}
+.pg-btn--primary:hover:not(:disabled) {
+  background: var(--vp-c-brand-2);
+}
+
+.pg-input,
+.pg-textarea {
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  width: 100%;
+}
+.pg-textarea {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.74rem;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.pg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+.pg-table th,
+.pg-table td {
+  text-align: left;
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--vp-c-divider-light, var(--vp-c-divider));
+}
+.pg-table th {
+  color: var(--vp-c-text-3);
+  font-weight: 600;
+}
+.pg-mono {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.75rem;
+}
+.pg-muted {
+  color: var(--vp-c-text-3);
+}
+.pg-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.pg-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: var(--vp-c-default-soft, var(--vp-c-bg-soft));
+}
+.pg-tag--flat {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+.pg-tag--percent {
+  background: var(--vp-c-purple-soft, #e6d8f5);
+  color: var(--vp-c-purple-1, #8e5cd9);
+}
+.pg-tag--maxed {
+  background: var(--vp-c-green-soft, #d2efe0);
+  color: var(--vp-c-green-1, #18794e);
+}
+.pg-tag--available {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+.pg-tag--locked {
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-3);
+}
+.pg-tag--error {
+  background: var(--vp-c-danger-soft, #f7d9da);
+  color: var(--vp-c-danger-1, #b8272c);
+}
+.pg-tag--warn {
+  background: var(--vp-c-yellow-soft, #f5e3c0);
+  color: var(--vp-c-yellow-1, #915930);
+}
